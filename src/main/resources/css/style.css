@@ -1,0 +1,24 @@
+body {
+        background-color: #99ccff;
+    }
+
+    #translator {
+       width: 350px;
+       height: 250px;
+       background-color: #ffff99;
+       border: 2px solid black;
+    }
+
+    #header {
+        font-family: sans-serif;
+    }
+
+    #main {
+        margin-left: 25px;
+        margin-right: 25px;
+        font-style:italic;
+    }
+
+	h1 {
+		font-size : 15px;
+	}
