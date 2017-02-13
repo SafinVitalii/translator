@@ -1,19 +1,20 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <html>
     <head>
-    <meta charset="utf-8" />
     <title>Translate App JSP</title>
-    <link rel="stylesheet" href="resources/css/style.css" />
-    <style type="text/css">
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="http://www.htmlhelp.com/style.css" />
+    <link rel="stylesheet" href="http://www.free-css.com/profile/styles/layout.css" />
     </head>
 <body>
     <h2>TomCat Servlet Example</h2>
     <div id = "translator">
-        <div id = "header">
-        <h1 align = "center">Translator</h1>
+        <div id = "header" class = "fl_left">
+        <h1>Translator</h1>
     </div>
-    <div id = "main">
+    <div id = "main" class="imgl">
         <form action = "servlet" method = "post">
         <h3> Word </h3>
         <input type = "text" name = "basetext" value = "${basetext}" />

@@ -5,10 +5,25 @@ package com.safin.translator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+/*  <servlet-mapping>
+    <servlet-name>translator</servlet-name>
+    <url-pattern>/servlet</url-pattern>
+  </servlet-mapping> */
 
-public class Main extends HttpServlet{
+@WebServlet (
+    name="translator",
+        urlPatterns="/servlet/*"
+)
+public class Main extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,6 +33,7 @@ public class Main extends HttpServlet{
         }
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
+        response.setHeader("Content-Type", "text/css;charset=UTF-8");
         request.setAttribute("translation","-");
         request.setAttribute("basetext", "+");
         request.setAttribute("base_lang", "English");
@@ -37,6 +53,7 @@ public class Main extends HttpServlet{
         if (user == null) {
             user = "Guest";
         }
+
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
         String translation = null;
