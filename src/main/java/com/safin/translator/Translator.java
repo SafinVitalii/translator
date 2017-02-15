@@ -20,6 +20,14 @@ public class Translator {
         Translate.setClientSecret("cLQx18TKFvLlxh0OrpLfPBylBiB65G5rTY7x2GDysUg");
     }
 
+    MyHashMap<String, String> getDictionary() {
+        return dictionary;
+    }
+
+    IOProcessor getIoProcessor() {
+        return ioProcessor;
+    }
+
     String getBaseLanguage() {
         return baseLanguage;
     }

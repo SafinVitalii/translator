@@ -26,6 +26,40 @@ public class DatabaseConnection {
         fillFromDatabase();
     }
 
+    void updateData(String text, String translation) {
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+            statement = connection.prepareStatement(
+                    "UPDATE words SET translation = (?) WHERE word = (?)");
+            statement.setString(1, translation);
+            statement.setString(2, text);
+            statement.executeUpdate();
+            System.out.println("Translation of " + text + "replaced with " + translation + " " + statement.toString());
+        } catch (SQLException ex) {
+            System.out.println("SQLException caught in insertData()" + ex.toString());
+        } catch (Exception ex) {
+            System.out.println("Error during updating database!" + ex.toString());
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+                if (statement != null) {
+                    statement.close();
+                }
+
+                if (connection != null) {
+                    connection.close();
+                }
+
+            } catch (SQLException ex) {
+                Logger lgr = Logger.getLogger(IOProcessor.class.getName());
+                lgr.log(Level.WARNING, ex.getMessage(), ex);
+            }
+        }
+    }
+
     void insertData(String text, String translation) {
         try {
             connection = DriverManager.getConnection(url, user, password);
@@ -62,7 +96,7 @@ public class DatabaseConnection {
     boolean existsInDatabase(String text) {
         try {
             connection = DriverManager.getConnection(url, user, password);
-            statement = connection.prepareStatement("SELECT word FROM words WHERE word = (?) ");
+            statement = connection.prepareStatement("SELECT * FROM words WHERE word=(?)");
             statement.setString(1, text);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
